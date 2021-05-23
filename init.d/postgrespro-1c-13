@@ -1,0 +1,142 @@
+#!/bin/sh
+# Start/stop the Postgres Pro 1c database server.
+#
+### BEGIN INIT INFO
+# Provides:		postgrespro-1c-13
+# Required-Start:	$local_fs $remote_fs $network $time
+# Required-Stop:	$local_fs $remote_fs $network $time
+# Should-Start:		$syslog
+# Should-Stop:		$syslog
+# Default-Start:	2 3 4 5
+# Default-Stop:		0 1 6
+# Short-Description:	Postgres Pro database server
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+PGMAJORVERSION=13
+
+NAME=postgrespro-1c-13
+
+# For SELinux we need to use 'runuser' not 'su'
+if [ -x /sbin/runuser ]
+then
+    SU=runuser
+else
+    SU=su
+fi
+
+# Define variable for locale parameter:
+LOCALEPARAMETER=$2
+
+# Set defaults for configuration variables
+BINDIR=/opt/pgpro/1c-13/bin
+PGDATA=/var/lib/pgpro/1c-13/data
+lockfile=/var/run/${NAME}.lock
+pidfile="/var/run/${NAME}.pid"
+# Override defaults from /etc/default/${NAME} if file is present
+DEFCONFIG=/etc/default/${NAME}
+[ -f $DEFCONFIG ] && . $DEFCONFIG
+
+PGLOG="$(dirname "$PGDATA")/pgstartup-$(basename "$PGDATA").log"
+export PGDATA
+
+script_result=0
+
+start(){
+    $SU -l postgres -c "${BINDIR}/check-db-dir $PGDATA"
+    
+    echo -n "Starting ${NAME} service" "postgrespro-1c-13"
+	
+    $SU -l postgres -c "PATH=/opt/pgpro/1c-13/bin:/usr/bin:/usr/sbin:/bin:/sbin ${BINDIR}/postmaster -D '$PGDATA' ${PGOPTS} &" >> "$PGLOG" 2>&1 < /dev/null
+    sleep 2
+    pid=`head -n 1 "$PGDATA/postmaster.pid" 2>/dev/null`
+    if [ "x$pid" != x ]
+    then
+	if kill -0 $pid; then
+		log_success_msg OK
+	else
+		log_failure_msg FAILED
+	fi	
+	touch "$lockfile"
+	echo $pid > "$pidfile"
+	echo
+    else
+	log_failure_msg FAILED
+	script_result=1
+    fi
+}
+
+stop(){
+    echo -n "Stopping ${NAME} service" "postgrespro-1c-13"
+    if [ -e "$lockfile" ]
+    then
+
+	$SU -l postgres -c "${BINDIR}/pg_ctl stop -D '$PGDATA' -s -m fast" > /dev/null 2>&1 < /dev/null
+	ret=$?
+	if [ $ret -eq 0 ]
+	then
+	    log_success_msg STOPPED
+	    rm -f "$pidfile"
+	    rm -f "$lockfile"
+	else
+	    log_failure_msg FAILED
+	    script_result=1
+	fi
+    else
+	# not running; per LSB standards this is "ok"
+	log_success_msg OK
+    fi
+    echo
+}
+
+restart(){
+    stop
+    start
+}
+
+condrestart(){
+    [ -e "$lockfile" ] && restart || :
+}
+
+reload(){
+    $SU -l postgres -c "${BINDIR}/pg_ctl reload -D '$PGDATA' -s" > /dev/null 2>&1 < /dev/null
+}
+
+promote(){
+    $SU -l postgres -c "${BINDIR}/pg_ctl promote -D '$PGDATA' -s" > /dev/null 2>&1 < /dev/null
+}
+
+# See how we were called.
+case "$1" in
+  start)
+      start
+      ;;
+  stop)
+      stop
+      ;;
+  status)
+      $SU -l postgres -c "${BINDIR}/pg_ctl status -D '$PGDATA'"
+      script_result=$?
+      ;;
+  restart)
+      restart
+      ;;
+  promote)
+      promote
+      ;;
+  condrestart|try-restart)
+      condrestart
+      ;;
+  reload)
+      reload
+      ;;
+  force-reload)
+      restart
+      ;;
+  *)
+      echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload|promote}"
+      exit 2
+esac
+
+exit $script_result

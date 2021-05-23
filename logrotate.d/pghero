@@ -1,0 +1,10 @@
+# pghero logs:
+/var/log/pghero/*.log {
+  daily
+  missingok
+  rotate 14
+  compress
+  delaycompress
+  notifempty
+  copytruncate
+}

@@ -1,0 +1,15 @@
+[Unit]
+StopWhenUnneeded=true
+Requires=pghero-web.service
+After=pghero-web.service
+
+[Service]
+Environment=APP_PROCESS_INDEX=1
+ExecStart=/usr/bin/pghero run web
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
+
+[Install]
+WantedBy=pghero-web.service
