@@ -1,0 +1,6 @@
+# Whether to call msktutil --auto-update to rotate the password every 30 days or not.
+# Set to "false" or "true"
+AUTOUPDATE_ENABLED="false"
+
+# Any other args to pass to msktutil (e.g. -h hostname, --verbose, etc)
+AUTOUPDATE_OPTIONS=""
