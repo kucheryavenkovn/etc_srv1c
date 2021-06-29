@@ -16,6 +16,6 @@ network:
        gateway4: 10.10.1.1
        nameservers:
         addresses: [10.10.13.10, 10.10.0.3]
-        search: [tko22.local]
+        search: [tko22.local, tko22]
        dhcp4: no
        dhcp6: no
