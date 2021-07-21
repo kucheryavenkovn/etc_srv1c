@@ -193,6 +193,26 @@ Alias "/do" "/var/www/do/"
     ManagedApplicationDescriptor "/var/www/do/default.vrd"
 </Directory>
 
+# 1c publication
+Alias "/lkrest" "/var/www/lkrest/"
+<Directory "/var/www/lkrest/">
+    AllowOverride All
+    Options None
+    Require all granted
+    SetHandler 1c-application
+    ManagedApplicationDescriptor "/var/www/lkrest/default.vrd"
+</Directory>
+
+# 1c publication
+Alias "/bp" "/var/www/bp/"
+<Directory "/var/www/bp/">
+    AllowOverride All
+    Options None
+    Require all granted
+    SetHandler 1c-application
+    ManagedApplicationDescriptor "/var/www/bp/default.vrd"
+</Directory>
+
 #<Directory /srv/>
 #	Options Indexes FollowSymLinks
 #	AllowOverride None
@@ -245,4 +265,4 @@ IncludeOptional conf-enabled/*.conf
 IncludeOptional sites-enabled/*.conf
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-LoadModule _1cws_module "/opt/1cv8/x86_64/8.3.18.1433/wsap24.so"
+LoadModule _1cws_module "/opt/1cv8/x86_64/8.3.18.1483/wsap24.so"

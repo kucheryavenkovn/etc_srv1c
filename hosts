@@ -1,6 +1,7 @@
 127.0.0.1 localhost
 127.0.1.1 srv-1c.tko22.local srv-1c
 #10.10.13.10 tko22.local
+10.10.0.17 srv10-hv.eco-komplex22.local srv10-hv
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
