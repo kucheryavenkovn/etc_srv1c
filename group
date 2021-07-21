@@ -76,7 +76,7 @@ pulse:x:132:
 pulse-access:x:133:
 gdm:x:134:
 rdma:x:135:
-libvirt:x:136:kvn,root,libvirtdbus
+libvirt:x:136:kvn,root,libvirtdbus,ggo
 libvirt-qemu:x:64055:libvirt-qemu
 libvirt-dnsmasq:x:137:
 veeam:x:998:kvn

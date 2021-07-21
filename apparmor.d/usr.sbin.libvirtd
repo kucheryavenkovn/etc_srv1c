@@ -46,6 +46,8 @@ profile libvirtd /usr/sbin/libvirtd flags=(attach_disconnected) {
   network netlink raw,
   network packet dgram,
   network packet raw,
+  # For UID resolution in Focal (LP: #1890858)
+  unix (bind) type=dgram addr=@userdb-*,
 
   # for --p2p migrations
   unix (send, receive) type=stream addr=none peer=(label=unconfined addr=none),

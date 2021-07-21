@@ -47,8 +47,12 @@ start(){
     $SU -l postgres -c "${BINDIR}/check-db-dir $PGDATA"
     
     echo -n "Starting ${NAME} service" "postgrespro-1c-13"
-	
-    $SU -l postgres -c "PATH=/opt/pgpro/1c-13/bin:/usr/bin:/usr/sbin:/bin:/sbin ${BINDIR}/postmaster -D '$PGDATA' ${PGOPTS} &" >> "$PGLOG" 2>&1 < /dev/null
+
+    if [ "$ENABLE_ONLINE_UPGRADE" = "1" ]; then
+	$SU -l postgres -c "PATH=/opt/pgpro/1c-13/bin:/usr/bin:/usr/sbin:/bin:/sbin setarch -R x86_64 ${BINDIR}/postmaster -D '$PGDATA' ${PGOPTS} &" >> "$PGLOG" 2>&1 < /dev/null
+    else
+	$SU -l postgres -c "PATH=/opt/pgpro/1c-13/bin:/usr/bin:/usr/sbin:/bin:/sbin ${BINDIR}/postmaster -D '$PGDATA' ${PGOPTS} &" >> "$PGLOG" 2>&1 < /dev/null
+    fi
     sleep 2
     pid=`head -n 1 "$PGDATA/postmaster.pid" 2>/dev/null`
     if [ "x$pid" != x ]
