@@ -57,3 +57,5 @@ libvirtdbus:x:995:995::/nonexistent:/usr/sbin/nologin
 pcp:x:994:997:Performance Co-Pilot:/var/lib/pcp:/usr/sbin/nologin
 ntp:x:125:143::/nonexistent:/usr/sbin/nologin
 sssd:x:132:144:SSSD system user,,,:/var/lib/sss:/usr/sbin/nologin
+ggo:x:1001:1003::/home/ggo:/bin/sh
+ssaadmin:x:1002:1004::/home/ssaadmin:/bin/bash

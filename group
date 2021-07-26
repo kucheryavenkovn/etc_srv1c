@@ -18,7 +18,7 @@ voice:x:22:
 cdrom:x:24:kvn
 floppy:x:25:
 tape:x:26:
-sudo:x:27:kvn,ggo
+sudo:x:27:kvn,ggo,ssaadmin
 audio:x:29:pulse
 dip:x:30:kvn
 www-data:x:33:
@@ -90,3 +90,4 @@ sambashare:x:142:
 ntp:x:143:
 sssd:x:144:
 ggo:x:1003:
+ssaadmin:x:1004:
