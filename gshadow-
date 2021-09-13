@@ -18,7 +18,7 @@ voice:*::
 cdrom:*::kvn
 floppy:*::
 tape:*::
-sudo:*::kvn,ggo
+sudo:*::kvn,ggo,ssaadmin
 audio:*::pulse
 dip:*::kvn
 www-data:*::

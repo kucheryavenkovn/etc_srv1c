@@ -91,3 +91,4 @@ ntp:x:143:
 sssd:x:144:
 ggo:x:1003:
 ssaadmin:x:1004:
+zabbix:x:145:
