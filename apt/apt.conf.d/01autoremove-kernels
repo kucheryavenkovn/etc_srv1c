@@ -3,22 +3,27 @@ APT::NeverAutoRemove
 {
    "^linux-.*-5\.11\.0-36-generic$";
    "^linux-.*-5\.11\.0-37-generic$";
+   "^linux-.*-5\.4\.0-88-generic$";
    "^kfreebsd-.*-5\.11\.0-36-generic$";
    "^kfreebsd-.*-5\.11\.0-37-generic$";
+   "^kfreebsd-.*-5\.4\.0-88-generic$";
    "^gnumach-.*-5\.11\.0-36-generic$";
    "^gnumach-.*-5\.11\.0-37-generic$";
+   "^gnumach-.*-5\.4\.0-88-generic$";
    "^.*-modules-5\.11\.0-36-generic$";
    "^.*-modules-5\.11\.0-37-generic$";
+   "^.*-modules-5\.4\.0-88-generic$";
    "^.*-kernel-5\.11\.0-36-generic$";
    "^.*-kernel-5\.11\.0-37-generic$";
+   "^.*-kernel-5\.4\.0-88-generic$";
 };
 /* Debug information:
 # dpkg list:
 rc  linux-image-5.11.0-25-generic         5.11.0-25.27~20.04.1                  amd64        Signed kernel image generic
 rc  linux-image-5.11.0-27-generic         5.11.0-27.29~20.04.1                  amd64        Signed kernel image generic
-ii  linux-image-5.11.0-34-generic         5.11.0-34.36~20.04.1                  amd64        Signed kernel image generic
+rc  linux-image-5.11.0-34-generic         5.11.0-34.36~20.04.1                  amd64        Signed kernel image generic
 ii  linux-image-5.11.0-36-generic         5.11.0-36.40~20.04.1                  amd64        Signed kernel image generic
-iF  linux-image-5.11.0-37-generic         5.11.0-37.41~20.04.2                  amd64        Signed kernel image generic
+ii  linux-image-5.11.0-37-generic         5.11.0-37.41~20.04.2                  amd64        Signed kernel image generic
 rc  linux-image-5.4.0-72-generic          5.4.0-72.80                           amd64        Signed kernel image generic
 rc  linux-image-5.4.0-73-generic          5.4.0-73.82                           amd64        Signed kernel image generic
 rc  linux-image-5.4.0-74-generic          5.4.0-74.83                           amd64        Signed kernel image generic
@@ -26,31 +31,34 @@ rc  linux-image-5.4.0-77-generic          5.4.0-77.86                           
 rc  linux-image-5.4.0-80-generic          5.4.0-80.90                           amd64        Signed kernel image generic
 rc  linux-image-5.4.0-81-generic          5.4.0-81.91                           amd64        Signed kernel image generic
 ii  linux-image-5.4.0-86-generic          5.4.0-86.97                           amd64        Signed kernel image generic
+iF  linux-image-5.4.0-88-generic          5.4.0-88.99                           amd64        Signed kernel image generic
 rc  linux-image-5.8.0-50-generic          5.8.0-50.56~20.04.1                   amd64        Signed kernel image generic
 rc  linux-image-5.8.0-53-generic          5.8.0-53.60~20.04.1                   amd64        Signed kernel image generic
 rc  linux-image-5.8.0-55-generic          5.8.0-55.62~20.04.1                   amd64        Signed kernel image generic
 rc  linux-image-5.8.0-59-generic          5.8.0-59.66~20.04.1                   amd64        Signed kernel image generic
 rc  linux-image-5.8.0-63-generic          5.8.0-63.71~20.04.1                   amd64        Signed kernel image generic
-ii  linux-image-generic                   5.4.0.86.90                           amd64        Generic Linux kernel image
+ii  linux-image-generic                   5.4.0.88.92                           amd64        Generic Linux kernel image
 ii  linux-image-generic-hwe-20.04         5.11.0.37.41~20.04.16                 amd64        Generic Linux kernel image
 # list of installed kernel packages:
-5.11.0-34-generic 5.11.0-34.36~20.04.1
 5.11.0-36-generic 5.11.0-36.40~20.04.1
 5.11.0-37-generic 5.11.0-37.41~20.04.2
 5.4.0-86-generic 5.4.0-86.97
+5.4.0-88-generic 5.4.0-88.99
 # list of different kernel versions:
 5.11.0-37.41~20.04.2
 5.11.0-36.40~20.04.1
-5.11.0-34.36~20.04.1
+5.4.0-88.99
 5.4.0-86.97
-# Installing kernel: 5.11.0-37.41~20.04.2 (5.11.0-37-generic)
+# Installing kernel: 5.4.0-88.99 (5.4.0-88-generic)
 # Running kernel: 5.11.0-36.40~20.04.1 (5.11.0-36-generic)
 # Last kernel: 5.11.0-37.41~20.04.2
 # Previous kernel: 5.11.0-36.40~20.04.1
 # Kernel versions list to keep:
 5.11.0-36.40~20.04.1
 5.11.0-37.41~20.04.2
+5.4.0-88.99
 # Kernel packages (version part) to protect:
 5\.11\.0-36-generic
 5\.11\.0-37-generic
+5\.4\.0-88-generic
 */
