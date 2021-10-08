@@ -12,10 +12,10 @@ network:
        interfaces:
          - enp3s0
        addresses:
-         - 10.10.0.22/16
-       gateway4: 10.10.1.1
+         - 172.20.0.251/23
+       gateway4: 172.20.0.1
        nameservers:
-        addresses: [10.10.13.10, 10.10.0.3]
+        addresses: [172.20.0.250, 172.20.0.1]
         search: [tko22.local, tko22]
        dhcp4: no
        dhcp6: no
