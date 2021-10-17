@@ -12,7 +12,7 @@ network:
        interfaces:
          - enp3s0
        addresses:
-         - 172.20.0.251/23
+         - 172.20.0.242/23
        gateway4: 172.20.0.1
        nameservers:
         addresses: [172.20.0.250, 172.20.0.1]
