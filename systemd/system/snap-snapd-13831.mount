@@ -1,11 +1,11 @@
 [Unit]
-Description=Mount unit for snapd, revision 13270
+Description=Mount unit for snapd, revision 13831
 Before=snapd.service
 After=zfs-mount.service
 
 [Mount]
-What=/var/lib/snapd/snaps/snapd_13270.snap
-Where=/snap/snapd/13270
+What=/var/lib/snapd/snaps/snapd_13831.snap
+Where=/snap/snapd/13831
 Type=squashfs
 Options=nodev,ro,x-gdu.hide,x-gvfs-hide
 LazyUnmount=yes
